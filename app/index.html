@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Zooasunción</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -10,6 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
     <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/bootswatch/flatly/bootstrap.css" />
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
@@ -20,22 +21,42 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">yvyUi</h3>
-      </div>
+    <!-- nav -->
+    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="ActiveTabCtrl">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/#/"><span class="glyphicon glyphicon-leaf white"></span>&nbsp; Zoológico de Asunción</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+          <ul class="nav navbar-nav">
+            <li ng-class="{active: route.current.activetab == 'home'}">
+              <a href="/#/"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a>
+            </li>
+            <li ng-class="{active: route.current.activetab == 'mapa'}">
+              <a href="/#/mapa"><span class="glyphicon glyphicon-globe"></span>&nbsp; Mapa</a>
+            </li>
+            <li ng-class="{active: route.current.activetab == 'datos'}">
+              <a href="/#/datos"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Datos</a>
+            </li>
+            <li ng-class="{active: route.current.activetab == 'about'}">
+              <a href="/#/about-us"><span class="glyphicon glyphicon-user"></span>&nbsp; About us</a>
+            </li>
+          </ul>
 
-      <div ng-view=""></div>
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+           <ul class="nav navbar-nav navbar-right" style="margin-top: 15px;">
+             <li>
+               <img id="cc-by" class="navbar-logo" src="images/cc-by-sa-logo.png" alt="Open Data">
+             </li>
+             <li>
+               <img id="opendata" class="navbar-logo" src="images/datos-abiertos.png" alt="Open Data">
+             </li>
+           </ul>
+        </div>
+
       </div>
-    </div>
+    </nav>
+
+    <div class="angular-view" ng-view=""></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -71,15 +92,16 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/directives/mapaleaflet.js"></script>
-        <script src="scripts/controllers/mapaleaflet.js"></script>
+        <script src="scripts/controllers/tabs.js"></script>
+        <script src="scripts/controllers/data_list.js"></script>
+        <script src="scripts/factories/zoo-asu-factory.js"></script>
+        <script src="scripts/directives/mapa_zoo_asu.js"></script>
         <!-- endbuild -->
 </body>
 </html>

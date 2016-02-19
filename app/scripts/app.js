@@ -17,19 +17,29 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/mapa', {
+        templateUrl: 'views/mapa_zoo_asu.html',
+        activetab: 'mapa'
+      })
+      .when('/datos', {
+        templateUrl: 'views/data_list.html',
+        controller: 'DataTableCtrl',
+        activetab: 'datos'
+      })
+      .when('/about-us', {
+        templateUrl: 'views/about-us.html',
+        activetab: 'about-us'
+      })
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        activetab: 'home'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/mapa'
       });
   });
